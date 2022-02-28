@@ -40,4 +40,8 @@ Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
 
+// ログアウト時
+Route::get('/logout', 'Auth\LoginController@logout');
+
+
 

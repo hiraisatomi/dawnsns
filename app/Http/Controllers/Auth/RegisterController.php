@@ -87,10 +87,12 @@ class RegisterController extends Controller
     //     return view("auth.register");
     // }
 
+    // ユーザー登録処理
     public function register(Request $request){
         if($request->isMethod('post')){
             $data = $request->input();
 
+            // バリテーションエラーの表示
             $validator = $this->validator($data);
             if ($validator->fails()) {
                 return redirect('/register')
@@ -98,6 +100,7 @@ class RegisterController extends Controller
                             ->withInput();
             }
 
+            // 登録フォームの表示
             $this->create($data);
             return redirect('added');
         }
@@ -106,6 +109,6 @@ class RegisterController extends Controller
     }
 
     public function added(){
-        return view('auth.added');
+        return view('auth.register');
     }
 }
