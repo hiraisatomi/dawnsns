@@ -36,6 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
+        // logoutは、ログイン中のguestミドルウェアからは除く
         $this->middleware('guest')->except('logout');
     }
     
@@ -53,8 +54,8 @@ class LoginController extends Controller
     }
 
     // ログアウト後ログイン画面へ戻る
-        protected function loggedOut(\Illuminate\Http\Request $request) {
-            return redirect('login');
+        protected function loggedOut(Request $request) {
+            return redirect('/login');
     }
     
 }

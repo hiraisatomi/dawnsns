@@ -23,25 +23,28 @@
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
+
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
-
+// 登録完了時のページ
 Route::get('/added', 'Auth\RegisterController@added');
 
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
+// 投稿の受け取り
+Route::post('/tweet','PostsController@tweet');
 
 Route::get('/profile','UsersController@profile');
-
 Route::get('/search','UsersController@index');
-
 Route::get('/follow-list','PostsController@index');
 Route::get('/follower-list','PostsController@index');
 
 
 // ログアウト時
 Route::get('/logout', 'Auth\LoginController@logout');
+
+
 
 
 

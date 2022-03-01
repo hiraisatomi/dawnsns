@@ -102,13 +102,13 @@ class RegisterController extends Controller
 
             // 登録フォームの表示
             $this->create($data);
-            return redirect('added');
+            return redirect('added')->with('username',$data['username']);
         }
         return view('auth.register');
 
     }
 
     public function added(){
-        return view('auth.register');
+        return view('auth.added');
     }
 }
