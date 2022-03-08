@@ -22,11 +22,10 @@
 <body>
     <header>
         <div id = "head">
-        <h1><a><img src="images/logo.png"></a></h1>
-            <div id="">
-                <div id="">
+        <h1><a><img src="images/main_logo.png"></a></h1>
+            <div id="user">
                 <!-- ログイン中のユーザー情報 Auth::user -->
-                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん <img src="images/arrow.png"></p>
+                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん <img src="images/dawn.png"></p>
                 <div>
                 <ul>
                     <li><a href="/top">ホーム</a></li>
@@ -39,22 +38,32 @@
     <div id="row">
         <div id="container">
             @yield('content')
+            
         </div >
-        <div id="side-bar">
-            <div id="confirm">
+
+
+    <div id="side-bar">
+        <div id="confirm">
             <!-- ログイン中のユーザー情報 Auth::user -->
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p> 
                 <div>
                 <p>フォロー数</p>
-                <p>〇〇名</p>
+                <p><?php $user = Auth::user(); ?>{{ $user->follow }}名</p>
                 </div>
-                <p class="btn"><a href="">フォローリスト</a></p>
+
+                <p class="btn btn-siccess"><a href="follows/followList">フォローリスト</a></p>
+
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>
+                <p>〇〇名</p>                
                 </div>
-                <p class="btn"><a href="">フォロワーリスト</a></p>
+
+                <p class="btn btn-success"><a href="follows/followersList">フォロワーリスト</a></p>
             </div>
+
+
+
+
             <p class="btn"><a href="">ユーザー検索</a></p>
         </div>
     </div>

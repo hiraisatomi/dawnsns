@@ -34,11 +34,15 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 // 投稿の受け取り
 Route::post('/tweet','PostsController@tweet');
+Route::get('/tweets','PostsController@index');
 
 Route::get('/profile','UsersController@profile');
 Route::get('/search','UsersController@index');
-Route::get('/follow-list','PostsController@index');
-Route::get('/follower-list','PostsController@index');
+Route::get('follows/follower-list','PostsController@index');
+Route::get('follows/follower','PostsController@index');
+
+Route::get('follows/follow-rist', 'PostsController@followList');
+Route::post('follows/follow', 'PostsController@follow');
 
 
 // ログアウト時
