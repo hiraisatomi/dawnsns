@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
             'mail' => 'hiraisatomi@gmail.com',
             'password' => Hash::make('satoko'),
             'bio' => '一つ目のユーザーです',
-            'follow' => 'フォロー数'
+            'posts' => '一つ目の投稿です'
         ]);
 }
 }

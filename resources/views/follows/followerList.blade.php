@@ -1,6 +1,6 @@
 @extends('layouts.login')
-<div class='container'>
-        <h2 class='page-header'>フォロワーリスト</h2>
+<div id='side-bar'>
+        <div class='followerlist'>フォロワーリスト</div>
         {!! Form::open(['url' => 'follows/follower']) !!}
         <div class="form-group">
             {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => 'フォロワーリスト']) !!}

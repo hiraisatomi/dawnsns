@@ -24,6 +24,7 @@ Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
 
+// ユーザー登録
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
 // 登録完了時のページ
@@ -34,15 +35,26 @@ Route::get('/added', 'Auth\RegisterController@added');
 Route::get('/top','PostsController@index');
 // 投稿の受け取り
 Route::post('/tweet','PostsController@tweet');
-Route::get('/tweets','PostsController@index');
+Route::post('/uptweet','PostsController@uptweet');
+// 投稿の編集
+Route::get('post/{id}/update-form', 'PostsController@updateForm');
+Route::post('post/update', 'PostsController@update');
+// 投稿の削除
+Route::get('post/{id}/delete','PostsController@delete');
 
+
+// プロフィール編集
 Route::get('/profile','UsersController@profile');
+// ユーザー検索
 Route::get('/search','UsersController@index');
-Route::get('follows/follower-list','PostsController@index');
-Route::get('follows/follower','PostsController@index');
 
-Route::get('follows/follow-rist', 'PostsController@followList');
-Route::post('follows/follow', 'PostsController@follow');
+
+// フォローリスト
+Route::get('post/followList','FollowsController@followList');
+Route::post('post/follow','FollowsController@follow');
+// フォロワーリスト
+Route::get('post/followerList','FollowsController@followerList');
+Route::get('post/follower','FollowsController@follower');
 
 
 // ログアウト時

@@ -37,6 +37,7 @@
     </header>
     <div id="row">
         <div id="container">
+        
             @yield('content')
             
         </div >
@@ -51,14 +52,17 @@
                 <p><?php $user = Auth::user(); ?>{{ $user->follow }}名</p>
                 </div>
 
-                <p class="btn btn-siccess"><a href="follows/followList">フォローリスト</a></p>
+            <div class='followlist'>
+                <p class="btn btn-siccess"><a href="post/follow">フォローリスト</a></p>
+            </div>
 
                 <div>
                 <p>フォロワー数</p>
-                <p>〇〇名</p>                
+                <p><?php $user = Auth::user(); ?>{{ $user->follow }}名</p>                
                 </div>
 
-                <p class="btn btn-success"><a href="follows/followersList">フォロワーリスト</a></p>
+            <div class='followerlist'>
+                <p class="btn btn-success"><a href="post/follower">フォロワーリスト</a></p>
             </div>
 
 
