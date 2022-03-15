@@ -21,25 +21,19 @@
     <td>{{ $list->posts }}</td>
     <td>{{ $list->created_at }}</td>
     
-    <td><a href="/post/{{$list->id}}/update-form"><img src="/images/edit.png" alt="edit"></a></td>
+    <td><a href="" data-toggle="modal" data-target="#modal{{$list->id}}"><img src="/images/edit.png" alt="edit"></a></td>
     <td><a href="/posts/{{$list->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')"><img src="/images/trash.png" alt="trash"></a></td> 
 </tr>
 
 <!-- 送信したツイートの受け取り -->
-<form action="/uptweet" method="post">
-@csrf
-    <input type="text" name="uptweet" value="{{ $list->posts }}">
-    <input type="hidden" name="upid" value="{{ $list->id }}">
-</form>
+
 
 
 <!-- ツイートの編集 モーダル機能-->
 
-<!-- 1.鉛筆クリックでモーダル表示 -->
-<input type="image" src="/images/edit.png" alt="edit" data-toggle="modal" data-target="#modal-tweet">
- 
+
   <!-- 2.モーダルの配置 -->
-  <div class="modal" id="modal-tweet" tabindex="-1">
+  <div class="modal" id="modal{{$list->id}}" tabindex="-1">
     <div class="modal-dialog">
  
       <!-- 3.モーダルのコンテンツ -->
@@ -55,15 +49,20 @@
  
         <!-- 5.モーダルのボディ -->
         <div class="modal-body">
+        <form action="/uptweet" method="post">
+        @csrf
         <input type="text" name="uptweet" value="{{ $list->posts }}">
         <input type="hidden" name="upid" value="{{ $list->id }}">
-            <!-- <textarea>つぶやいた内容を表示します。つぶやきは最大を150文字までとし、それ以上のテキストが入力フォームに打ち込まれた場合は、投稿できないように設定してください。</textarea> -->
-        </div>
- 
-        <!-- 6.モーダルのフッタ -->
         <div class="modal-footer">
           <input type="image" src="/images/edit.png" alt="edit">
         </div>
+        </form>
+        
+            <!-- <textarea>つぶやいた内容を表示します。つぶやきは最大を150文字までとし、それ以上のテキストが入力フォームに打ち込まれた場合は、投稿できないように設定してください。</textarea> -->
+        </div>
+ 
+      
+        
       </div>
     </div>
   </div>

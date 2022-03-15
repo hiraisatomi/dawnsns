@@ -48,7 +48,7 @@ Auth::routes();
 // プロフィール編集
 Route::get('/profile','UsersController@profile');
 // ユーザー検索
-Route::get('/search','UsersController@index');
+Route::get('/usersearch','UsersController@userserch');
 
 
 // フォローリスト

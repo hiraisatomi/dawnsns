@@ -44,10 +44,7 @@
         <div id="container">
 
         @yield('content')
-        
-
-    <br>
-    <br>
+</div>   
 
 
     <div id="side-bar">
@@ -73,9 +70,12 @@
             </div>
 
 
+            <br>
 
-
-            <p class="btn"><a href="">ユーザー検索</a></p>
+        <div class='search'>
+            <p class="btn btn-success"><a href="/usersearch">ユーザー検索</a></p>
+        
+            <p class="btn btn-success"><a href="">つぶやき検索</a></p>
         </div>
     </div>
     <footer>

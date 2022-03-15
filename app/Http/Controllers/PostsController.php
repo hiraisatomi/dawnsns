@@ -46,27 +46,6 @@ class PostsController extends Controller
     }
 
 
-    // ツイートの編集
-    // public function updateFome($id){
-    //     $post = DB::table('posts')
-    //         ->where('id', $id)
-    //         ->first();
-    //     return view('posts.updateForm', ['post' => $post]);
-    // }
-
-    // public function update(Request $request)
-    // {
-    //     $id = $request->input('id');
-    //     $up_post = $request->input('upPost');
-    //     DB::table('posts')
-    //         ->where('id', $id)
-    //         ->update(
-    //            ['post' => $up_post]
-    //         );
-
-    //     return redirect('/top');
-    // }
-
 
     // ツイートの削除
     public function trash($id){
@@ -80,16 +59,6 @@ class PostsController extends Controller
 }
 
 
-namespace App;
-
-use Illuminate\Database\Eloquent\Model;
-
-class Tweet extends Model
-{
-    protected $fillable = [   // <---追加
-        'user_id', 'tweet',
-    ];
-}
 
 
 
