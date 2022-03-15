@@ -8,9 +8,9 @@ class FollowsController extends Controller
 {
     //
     public function followList(){
-        return view('follows.followList');
+        return view('/follow');
     }
     public function followerList(){
-        return view('follows.followerList');
+        return view('/follower');
     }
 }

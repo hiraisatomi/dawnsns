@@ -33,15 +33,17 @@ Route::get('/added', 'Auth\RegisterController@added');
 
 //ログイン中のページ
 Route::get('/top','PostsController@index');
-// 投稿の受け取り
+// 投稿の送信と受け取り
 Route::post('/tweet','PostsController@tweet');
 Route::post('/uptweet','PostsController@uptweet');
-// 投稿の編集
-Route::get('post/{id}/update-form', 'PostsController@updateForm');
-Route::post('post/update', 'PostsController@update');
-// 投稿の削除
-Route::get('post/{id}/delete','PostsController@delete');
 
+// 投稿の編集
+// Route::post('update', 'PostsController@update');
+// 投稿の削除
+Route::get('/posts/{id}/delete','PostsController@trash');
+
+
+Auth::routes();
 
 // プロフィール編集
 Route::get('/profile','UsersController@profile');
@@ -50,11 +52,11 @@ Route::get('/search','UsersController@index');
 
 
 // フォローリスト
-Route::get('post/followList','FollowsController@followList');
-Route::post('post/follow','FollowsController@follow');
+Route::get('/followList','FollowsController@followList');
+Route::post('/follow','FollowsController@follow');
 // フォロワーリスト
-Route::get('post/followerList','FollowsController@followerList');
-Route::get('post/follower','FollowsController@follower');
+Route::get('/followerList','FollowsController@followerList');
+Route::get('/follower','FollowsController@follower');
 
 
 // ログアウト時

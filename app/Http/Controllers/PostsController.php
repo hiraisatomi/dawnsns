@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 // 以下忘れず追記
 use App\Post; 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 
 class PostsController extends Controller
@@ -25,17 +26,17 @@ class PostsController extends Controller
 
     //ツイート内容の送信保存
     public function tweet(Request $request){
-        $post = $request->input('tweet');
+        $tweet = $request->input('tweet');
         post::create([
             'user_id' => Auth::id(),
-            'posts' => $post,
+            'posts' => $tweet,
         ]);        
         return redirect('/top');
     }
 
     // ツイート内容の表示
     public function uptweet(Request $request){
-        $post = $request->input('uptweet');
+        $uptweet = $request->input('uptweet');
         $upid = $request->input('upid');
         post::where('id',$upid)
             ->update([
@@ -46,36 +47,49 @@ class PostsController extends Controller
 
 
     // ツイートの編集
-    
+    // public function updateFome($id){
+    //     $post = DB::table('posts')
+    //         ->where('id', $id)
+    //         ->first();
+    //     return view('posts.updateForm', ['post' => $post]);
+    // }
+
+    // public function update(Request $request)
+    // {
+    //     $id = $request->input('id');
+    //     $up_post = $request->input('upPost');
+    //     DB::table('posts')
+    //         ->where('id', $id)
+    //         ->update(
+    //            ['post' => $up_post]
+    //         );
+
+    //     return redirect('/top');
+    // }
+
 
     // ツイートの削除
-    public function delete($id){
+    public function trash($id){
         DB::table('posts')
          ->where('id', $id)
          ->delete();
+
          return redirect('/top');
     }
 
-
-
-
-//     // フォローリスト
-//     public function followList(){
-//         return view('follows.followList');
-//     }
-
-//     public function follow(){
-//         return view('posts.index');
-// }
-
-//     // フォロワーリスト
-//     public function followerList(){
-//         return view('follows.followList');
-//     }
-
-//     public function follower(){
-//         return view('posts.index');
-// }
-
-
 }
+
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Tweet extends Model
+{
+    protected $fillable = [   // <---追加
+        'user_id', 'tweet',
+    ];
+}
+
+
+

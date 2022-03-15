@@ -18,12 +18,17 @@
     <!--iphoneのアプリアイコン指定-->
     <link rel="apple-touch-icon-precomposed" href="画像のURL" />
     <!--OGPタグ/twitterカード-->
+    <meta name=”twitter:card” content=”SummaryCard” />
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
 </head>
 <body>
     <header>
         <div id = "head">
         <h1><a><img src="images/main_logo.png"></a></h1>
             <div id="user">
+       
                 <!-- ログイン中のユーザー情報 Auth::user -->
                     <p><?php $user = Auth::user(); ?>{{ $user->username }}さん <img src="images/dawn.png"></p>
                 <div>
@@ -37,10 +42,12 @@
     </header>
     <div id="row">
         <div id="container">
+
+        @yield('content')
         
-            @yield('content')
-            
-        </div >
+
+    <br>
+    <br>
 
 
     <div id="side-bar">
@@ -53,12 +60,12 @@
                 </div>
 
             <div class='followlist'>
-                <p class="btn btn-siccess"><a href="post/follow">フォローリスト</a></p>
+                <p class="btn btn-success"><a href="post/follow">フォローリスト</a></p>
             </div>
 
                 <div>
                 <p>フォロワー数</p>
-                <p><?php $user = Auth::user(); ?>{{ $user->follow }}名</p>                
+                <p><?php $user = Auth::user(); ?>{{ $user->follower }}名</p>                
                 </div>
 
             <div class='followerlist'>
@@ -73,7 +80,8 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+<!-- モーダルダイアログ表示のjQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
