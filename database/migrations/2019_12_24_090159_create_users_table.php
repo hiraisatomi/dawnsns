@@ -13,8 +13,8 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        // マイグレーション
-        Schema::create('users', function (Blueprint $table) {
+        // マイグレーション    
+         Schema::create('users', function (Blueprint $table) {
             $table->increments('id')->autoIncrement();
             $table->string('username',255);
             $table->string('mail',255);
@@ -25,7 +25,10 @@ class CreateUsersTable extends Migration
             // 追加
             $table->integer('user_id');
             $table->text('tweet');
+        
+            
         });
+
     }
 
     /**

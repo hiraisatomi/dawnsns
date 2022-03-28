@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'mail', 'password',
+        'username', 'mail', 'password','login_id',
     ];
 
     /**
@@ -29,7 +29,21 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+    ];
+  
+
+   
     public function posts(){
         return $this->hasMany('App\Post');
     }
+
+    
+    public function getAllUsers(Int $user_id)
+    {
+        return $this->Where('id', '<>', $user_id)->paginate(5);
+    }
+
 }
+

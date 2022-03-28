@@ -16,8 +16,10 @@
 // });
 // Route::get('/home', 'HomeController@index')->name('home');
 
-//Auth::routes();
-
+Auth::routes();
+Route::resource('users', 'UsersController');
+Route::group(['middleware' => 'auth'], function() {
+});
 
 //ログアウト中のページ
 Route::get('/login', 'Auth\LoginController@login');
@@ -37,8 +39,6 @@ Route::get('/top','PostsController@index');
 Route::post('/tweet','PostsController@tweet');
 Route::post('/uptweet','PostsController@uptweet');
 
-// 投稿の編集
-// Route::post('update', 'PostsController@update');
 // 投稿の削除
 Route::get('/posts/{id}/delete','PostsController@trash');
 
@@ -47,15 +47,26 @@ Auth::routes();
 
 // プロフィール編集
 Route::get('/profile','UsersController@profile');
-// ユーザー検索
-Route::get('/usersearch','UsersController@userserch');
+Route::post('/profile','UsersController@profile');
+Route::post('/upprofile','UsersController@upprofile');
+Route::get('/index', 'UsersController@index');
 
+
+// ユーザー検索
+Route::get('/usersearch','UsersController@usersearch');
+Route::post('/usersearch','UsersController@usersearch');
+// つぶやき検索
+Route::get('/tweetsearch','UsersController@tweetsearch');
+Route::post('/tweetsearch','UsersController@tweetsearch');
+
+// フォローする・外す
+Route::get('/follow/{follow}', 'FollowsController@follow');
+Route::get('/unfollow/{unfollow}', 'FollowsController@unfollow');
 
 // フォローリスト
-Route::get('/followList','FollowsController@followList');
-Route::post('/follow','FollowsController@follow');
+Route::get('/follow','FollowsController@follow');
+
 // フォロワーリスト
-Route::get('/followerList','FollowsController@followerList');
 Route::get('/follower','FollowsController@follower');
 
 
