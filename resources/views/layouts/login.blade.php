@@ -25,63 +25,66 @@
 </head>
 <body>
     <header>
-        <div id = "head">
-        <h1><a><img src="images/main_logo.png"></a></h1>
-            <div id="user">
-       
                 <!-- ログイン中のユーザー情報 Auth::user -->
-                    <p><?php $user = Auth::user(); ?>{{ $user->username }}さん <img src="images/dawn.png"></p>
-                <div>
+                 
+        <div class="container nav-wrapper">           
+            <p class="menubtn">^</p>
+            <nav>
                 <ul>
-                    <li><a href="/top">ホーム</a></li>
-                    <li><a href="/profile">プロフィール</a></li>
-                    <li><a href="/logout">ログアウト</a></li>
-                </ul>
-            </div>
+                <li><a href="/top"><img src="images/main_logo.png"></a></li>
+                <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="images/dawn.png"></p>
+                <li><a href="/top">HOME</a></li>
+                <li><a href="/profile">プロフィール編集</a></li>
+                <li><a href="/logout">ログアウト</a></li>
+            </ul>
         </div>
+        </nav>
     </header>
-    <div id="row">
-        <div id="container">
 
         @yield('content')
-</div>   
-
-
+        <footer>
     <div id="side-bar">
         <div id="confirm">
             <!-- ログイン中のユーザー情報 Auth::user -->
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p> 
                 <div>
                 <p>フォロー数</p>
-                <p><?php $user = Auth::user(); ?>{{ $user->follow }}名</p>
+                <p>名</p>
                 </div>
 
-            <div class='followlist'>
-                <p class="btn btn-success"><a href="post/follow">フォローリスト</a></p>
-            </div>
-
+        <div class='follow'>
+                
+                <p class="btn"><a href="/follow">フォローリスト</a></p>
+        </div>
+        
                 <div>
                 <p>フォロワー数</p>
-                <p><?php $user = Auth::user(); ?>{{ $user->follower }}名</p>                
+                <p>名</p>
                 </div>
 
-            <div class='followerlist'>
-                <p class="btn btn-success"><a href="post/follower">フォロワーリスト</a></p>
-            </div>
+        <div class='follower'>
+               
+                <p class="btn"><a href="/follower">フォロワーリスト</a></p>
+               
+        </div>
 
-
-            <br>
 
         <div class='search'>
-            <p class="btn btn-success"><a href="/usersearch">ユーザー検索</a></p>
-        
-            <p class="btn btn-success"><a href="">つぶやき検索</a></p>
+            <p class="btn"><a href="/usersearch">ユーザー検索</a></p>
+            </div>
+            
+            <p class="btn"><a href="">つぶやき検索</a></p>
+            </div>
         </div>
     </div>
-    <footer>
+</div>
+</div>
     </footer>
 <!-- モーダルダイアログ表示のjQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>

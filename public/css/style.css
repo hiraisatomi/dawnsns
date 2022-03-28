@@ -20,3 +20,60 @@ header{
     flex: 0 0 19%;
     border-left: 1px solid #6C6C6C;
 }
+
+.menu-trigger span:nth-child(1) {
+    top: 6px;
+  }
+  .menu-trigger span:nth-child(2) {
+    top: 18px;
+  }
+  .menu-trigger span:nth-child(3) {
+    top: 30px;
+  }
+
+  .g-navi {
+    display: block;
+    position: fixed;
+    z-index: 2;
+    padding-top: 60px;
+    transform: translateY(100%);
+    transition: .5s ease-in-out;
+    height: 100vh;
+  }
+
+  /* .g-navi ul{
+    display: block;
+  }
+
+  .g-navi.active{
+    transform: translateY(0%);
+    transition: .5s ease-in-out;
+  }
+
+  .menubtn{
+    width:100%;
+    max-width: 50px;
+    position: fixed;
+    z-index: 999;
+  }
+
+  .sp-logo{
+    width:100%;
+    max-width: 100px;
+}
+
+.container nav-wrapper{
+    max-width:50px;
+    margin: 0 auto;
+    position: relative;/*追記*/
+    /* height:100%;/*追記*/
+/* }
+
+nav{
+    /* background-color:#ccc; */
+    /* padding:80px 40% 100px;/*調整*/
+    /* right: auto;
+    position: absolute;追記 */
+    /* height:100%;追記
+    width:100%;追記 */
+/* } 
