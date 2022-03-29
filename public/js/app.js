@@ -85,9 +85,15 @@ export default{
     mutations,
     actions
 }
-$(function(){
-  $("nav").hide();
-  $(".menubtn").click(function(){
-    $("nav").toggle(300);
+
+
+$(".nav-wrapper").click(function()
+{
+
+$(this).toggleClass('active');
+    $("#g-nav").toggleClass('panelactive');
 });
+
+$("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
+  $(".nav-wrapper").removeClass('active');//ボタンの activeクラスを除去
 });

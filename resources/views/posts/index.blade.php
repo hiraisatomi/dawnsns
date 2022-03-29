@@ -7,7 +7,7 @@
 <form action="/tweet" method="post">
 @csrf
 <!-- 入力方法、初期表示する内容placeholderの指定、画像の表示 -->
-    <img src="/images/dawn.png" alt="icon">
+    <img src="/images/dawn.png" alt="icon" class="circle2"/>
     <input type="text" name="tweet" placeholder="何をつぶやこうか...?">
     <input type="image" src="/images/post.png" alt="送信する">
     <p></p>
@@ -17,14 +17,14 @@
 @foreach($lists as $list)
 <tr>
     <td>
-        <img src="/images/{{ $list->user->images }}" alt="icon">
+        <img src="/images/{{ $list->user->images }}" alt="icon" class="circle2"/>
         <!-- 投稿の表示 -->
     </td>
     <td>{{ $list->user->username }}</td>
     <td>{{ $list->posts }}</td>
     <td>{{ $list->created_at }}</td>
     
-    <td><a href="" data-toggle="modal" data-target="#modal{{$list->id}}"><img src="/images/edit.png" alt="edit"></a></td>
+    <td><a href="" data-toggle="modal" data-target="#modal{{$list->id}}"><img src="/images/edit.png" alt="edit" ></a></td>
     <td><a href="/posts/{{$list->id}}/delete" onclick="return confirm('このつぶやきを削除します。よろしいでしょうか？')"><img src="/images/trash.png" alt="trash"></a></td> 
 </tr>
 

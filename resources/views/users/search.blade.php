@@ -18,7 +18,6 @@
     <td><a href="/follow/{{$user->id}}">フォローをする</a></td>
     <td><a href="/unfollow/{{$user->id}}">フォローを外す</a></td>
 </tr>
-
 @endforeach
 </table>
 

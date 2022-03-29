@@ -11,7 +11,7 @@
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
-    <link rel="icon" href="画像URL" sizes="16x16" type="image/png" />
+    <link rel="icon" href="images/dawn.png" sizes="16x16" type="image/png" />
     <link rel="icon" href="画像URL" sizes="32x32" type="image/png" />
     <link rel="icon" href="画像URL" sizes="48x48" type="image/png" />
     <link rel="icon" href="画像URL" sizes="62x62" type="image/png" />
@@ -24,22 +24,24 @@
 
 </head>
 <body>
-    <header>
-                <!-- ログイン中のユーザー情報 Auth::user -->
-                 
-        <div class="container nav-wrapper">           
-            <p class="menubtn">^</p>
-            <nav>
-                <ul>
-                <li><a href="/top"><img src="images/main_logo.png"></a></li>
-                <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="images/dawn.png"></p>
-                <li><a href="/top">HOME</a></li>
-                <li><a href="/profile">プロフィール編集</a></li>
-                <li><a href="/logout">ログアウト</a></li>
-            </ul>
+    <header id="header">
+        <div class="header1">
+        <ul>
+            <li><a href="/top"><img src="images/main_logo.png"></a></li>
+        </ul>
         </div>
-        </nav>
+        <div class="header2">
+        <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="images/dawn.png" class="circle"/></p>
+        </div>
     </header>
+    <div class="nav-wrapper"><span></span><span></span></div>
+    <nav class="g-nav">
+        <ul>
+            <li><a href="/top">HOME</a></li>
+            <li><a href="/profile">プロフィール編集</a></li>
+            <li><a href="/logout">ログアウト</a></li>
+            </ul>
+    </nav>
 
         @yield('content')
         <footer>
@@ -49,7 +51,7 @@
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p> 
                 <div>
                 <p>フォロー数</p>
-                <p>名</p>
+                <p>{{$user->id}}名</p>
                 </div>
 
         <div class='follow'>
@@ -59,7 +61,7 @@
         
                 <div>
                 <p>フォロワー数</p>
-                <p>名</p>
+                <p>{{$user->id}}名</p>
                 </div>
 
         <div class='follower'>
@@ -80,11 +82,12 @@
 </div>
 </div>
     </footer>
-<!-- モーダルダイアログ表示のjQuery -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./js/script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
