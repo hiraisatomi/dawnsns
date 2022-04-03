@@ -8,31 +8,31 @@ use Illuminate\Validation\Rule;
 use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\FollowUser;
-use App\Tweet;
-use App\Follower;
+use App\Follow;
+
 
 
 class UsersController extends Controller
 {
-    //
+    //プロフィール画面の表示
     public function profile(){
+        // users.profile内の情報を保持させたまま画面表示処理
         return view('users.profile');
     }
 
-    
+    // トップページ
     public function index(User $user)
     {
         $all_users = $user->getAllUsers(auth()->user()->id);
         ddd($all_users);
-
+        // posts.index内に全てのユーザー情報を保持させたまま処理
         return view('posts.index', [
             'all_users'  => $all_users
         ]);
     }
 
     
-
+    //プロフィールの更新   web.phpのpostルーティングを読み込み更新に成功したらプロフィールページに反映
     public function upprofile(Request $request){
         $validator = Validator::make($request->all(),[
           'username'  => 'required|min:2|max:12',
@@ -43,24 +43,33 @@ class UsersController extends Controller
         ]);
 
         $user = Auth::user();
-        //画像登録
-        $image = $request->file('iconimage')->store('public/images');
-        $validator->validate();
-        $user->update([
+        $image = $request->file('iconimage');
+        // 拡張子付きでファイル名を取得、名前の保存
+        if(!empty($image)){
+            $filename = $image->getClientOriginalName();
+            $image->storeAs('/images', $filename,);
+        }
+        User::where('id', Auth::id())->update([
             'username' => $request->input('username'),
             'mail' => $request->input('mail'),
             'password' => bcrypt($request->input('newpassword')),
             'bio' => $request->input('bio'),
-            'images' => basename($image),
+            // 'iconimage' => basename($image),
         ]);
+        
         return redirect('/profile');
     }
 
 
-// whereで自分以外のユーザーを対象。likeで曖昧検索できるようルーティング
+    // whereで自分以外のユーザーを対象。likeで曖昧検索できるようルーティング
     public function usersearch(Request $request){
         $search = $request->input('search');
+        $followlists = Follow::where('follower', Auth::id())
+            ->get()
+            ->toArray(); 
+            // 配列化
 
+        // ！、<>で否定系になる
         if(!empty($search)){
             $users=User::where('id','<>', Auth::id())
                 ->where('username','like','%'.$search.'%')
@@ -69,14 +78,16 @@ class UsersController extends Controller
             $users=User::where('id','<>', Auth::id())
                 ->get();
         }
-        return view('users.search',['users'=>$users]);
+        // users.search内にusers、followlists情報を保持させたまま画面表示処理
+        return view('users.search',['users'=>$users, 'followlists'=>$followlists]);
     }
 
 
-
+    // ツイート検索
     public function tweetsearch(Request $request){
         $search = $request->input('search');
 
+        // ！で否定系になる
         if(!empty($search)){
             $tweets=User::where('id',Auth::id())
                 ->where('uptweet','like','%'.$search.'%')
@@ -85,29 +96,13 @@ class UsersController extends Controller
             $tweets=User::where('id',Auth::id())
                 ->get();
         }
-        return view('tweet.search',['tweet'=>$tweets]);
+        // users.search内にtweets情報を保持させたまま画面表示処理
+        return view('users.search',['tweet'=>$tweets]);
     }
 
-    public function show(User $user, Tweet $tweet, Follower $follower)
-    {
-        $login_user = auth()->user();
-        $is_following = $login_user->isFollowing($user->id);
-        $is_followed = $login_user->isFollowed($user->id);
-        $timelines = $tweet->getUserTimeLine($user->id);
-        $tweet_count = $tweet->getTweetCount($user->id);
-        $follow_count = $follower->getFollowCount($user->id);
-        $follower_count = $follower->getFollowerCount($user->id);
-
-        return view('users.show', [
-            'user'           => $user,
-            'is_following'   => $is_following,
-            'is_followed'    => $is_followed,
-            'timelines'      => $timelines,
-            'tweet_count'    => $tweet_count,
-            'follow_count'   => $follow_count,
-            'follower_count' => $follower_count
-        ]);
-    }
+    
+    
+    
 
 }
 

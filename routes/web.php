@@ -21,7 +21,7 @@ Route::resource('users', 'UsersController');
 Route::group(['middleware' => 'auth'], function() {
 });
 
-//ログアウト中のページ
+//ログインページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
 
@@ -38,12 +38,12 @@ Route::get('/top','PostsController@index');
 // 投稿の送信と受け取り
 Route::post('/tweet','PostsController@tweet');
 Route::post('/uptweet','PostsController@uptweet');
-
 // 投稿の削除
 Route::get('/posts/{id}/delete','PostsController@trash');
 
 
 Auth::routes();
+
 
 // プロフィール編集
 Route::get('/profile','UsersController@profile');
@@ -58,16 +58,19 @@ Route::post('/usersearch','UsersController@usersearch');
 // つぶやき検索
 Route::get('/tweetsearch','UsersController@tweetsearch');
 Route::post('/tweetsearch','UsersController@tweetsearch');
-
 // フォローする・外す
 Route::get('/follow/{follow}', 'FollowsController@follow');
 Route::get('/unfollow/{unfollow}', 'FollowsController@unfollow');
 
+
 // フォローリスト
-Route::get('/follow','FollowsController@follow');
+Route::get('/followlist','FollowsController@followlist');
+Route::post('/followlist','FollowsController@followlist');
+
 
 // フォロワーリスト
-Route::get('/follower','FollowsController@follower');
+Route::get('/followerlist','FollowsController@followerlist');
+Route::post('/followerlist','FollowsController@followerlist');
 
 
 // ログアウト時

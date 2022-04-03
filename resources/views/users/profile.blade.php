@@ -15,14 +15,14 @@
    @endif
 <dl class="UserProfile">
 
-<dt><img src="/images/dawn.png" alt="icon">UserName</dt> 
+<dt><img src="{{ Auth::user()->iconimages }}" class='circle2'>UserName</dt> 
     <dd><input type="text" name="username" value="{{ Auth::user()->username }}"></dd>
 
-<dt>MailAdress</dt>
+<dt>MailAddress</dt>
     <dd><input type="text" name="mail" value="{{ Auth::user()->mail }}"></dd>
 
 <dt>Password</dt>
-    <dd><input type="text" name="password" value="{{ Auth::user()->password }}"></dd>
+    <dd><input type="password" readonly name="password" value="{{ Auth::user()->password }}"></dd>
 
 <dt>new Password</dt>
     <dd><input type="password" name="newpassword"></dd>
@@ -31,7 +31,7 @@
     <dd><input type="textarea" name="bio" value="{{ Auth::user()->bio }}"></dd>
 
 <dt>Icon Image</dt>
-    <dd><input type="file" name="iconimage"></dd>
+    <dd><input type="file" name="iconimage" value="{{ Auth::user()->iconimage }}"></dd>
 </dl>
 
 <input type="submit" name="upprofile" value="更新">

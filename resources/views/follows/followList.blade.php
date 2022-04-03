@@ -1,18 +1,19 @@
 @extends('layouts.login')
 
 @section('content')
-<form action="/follow" method="post">
+<form action="/followlist" method="post">
  @csrf
- 
-
-
+ </form>
 <div id='side-bar'>
-        <div class='follow'>フォローリスト</div>
-        {!! Form::open(['url' => '/follow']) !!}
-        <div class="form-group">
-            {!! Form::input('text', 'newPost', null, ['required', 'class' => 'form-control', 'placeholder' => 'フォローリスト']) !!}
-        </div>
-    <div>
-        {!! Form::close() !!}
+        <div class='followlist'>
+            
+        <h1>Follow list</h1>
+        <br>
+        <p>ここにフォローリストを表示</p>
+        <br>
+        
+        
+    
     </div>
+
 @endsection

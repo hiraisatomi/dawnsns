@@ -5,7 +5,7 @@
     <!--IEブラウザ対策-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
-    <title></title>
+    <title>DAWN SNS</title>
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/style.css">
     <!--スマホ,タブレット対応-->
@@ -24,6 +24,8 @@
 
 </head>
 <body>
+<!-- ヘッダースタート -->
+@yield('header')
     <header id="header">
         <div class="header1">
         <ul>
@@ -31,9 +33,9 @@
         </ul>
         </div>
         <div class="header2">
-        <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="images/dawn.png" class="circle"/></p>
+        <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="/images/{{ $user->images }}" class="circle"></p>
         </div>
-    </header>
+    
     <div class="nav-wrapper"><span></span><span></span></div>
     <nav class="g-nav">
         <ul>
@@ -42,31 +44,37 @@
             <li><a href="/logout">ログアウト</a></li>
             </ul>
     </nav>
+    </header>
 
-        @yield('content')
+    <!-- コンテンツ継承 -->
+    @yield('content')
+
+    <!-- フッタースタート -->
         <footer>
+        
     <div id="side-bar">
-        <div id="confirm">
+    @yield('footer')
+
             <!-- ログイン中のユーザー情報 Auth::user -->
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p> 
                 <div>
                 <p>フォロー数</p>
-                <p>{{$user->id}}名</p>
+                <p>名</p>
                 </div>
 
         <div class='follow'>
                 
-                <p class="btn"><a href="/follow">フォローリスト</a></p>
+                <p class="btn"><a href="/followlist">フォローリスト</a></p>
         </div>
         
                 <div>
                 <p>フォロワー数</p>
-                <p>{{$user->id}}名</p>
+                <p>名</p>
                 </div>
 
         <div class='follower'>
                
-                <p class="btn"><a href="/follower">フォロワーリスト</a></p>
+                <p class="btn"><a href="/followerlist">フォロワーリスト</a></p>
                
         </div>
 
@@ -83,6 +91,7 @@
 </div>
     </footer>
 
+    <!-- jQueryのURL -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>

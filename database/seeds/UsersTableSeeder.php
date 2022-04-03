@@ -11,14 +11,16 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //
+        //初期設定
         DB::table('users')->insert([
             'username' => 'さとみ',
             'mail' => 'hiraisatomi@gmail.com',
             'password' => Hash::make('satoko'),
             'bio' => 'DAWNカリキュラムでSNSを学習しています。',
+            'iconimage' => '/images/dawm.png'
         ]);
 
+        // 共通テーブルの作成
         Schema::create('follow_users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('followed_user_id')->index();

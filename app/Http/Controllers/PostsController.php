@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Post; 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use App\User;
 
 class PostsController extends Controller
 {
@@ -17,9 +17,11 @@ class PostsController extends Controller
         $this->middleware('auth');
         }
 
+    //投稿時間の降順で取得
     public function index(){
         $lists = Post::orderby('posts.created_at','desc')
                 ->get();
+        // posts.index内にlist情報を保持させたまま画面表示処理
             return view('posts.index',['lists'=>$lists]);
     }
 
@@ -30,7 +32,8 @@ class PostsController extends Controller
         post::create([
             'user_id' => Auth::id(),
             'posts' => $tweet,
-        ]);        
+        ]);     
+        // web.phpのpostルーティングを読み込み送信保存に成功したらトップページへ
         return redirect('/top');
     }
 
@@ -42,9 +45,9 @@ class PostsController extends Controller
             ->update([
                 'posts' => $uptweet,
         ]);        
+        // web.phpのpostルーティングを読み込み表示に成功したらトップページに反映
         return redirect('/top');
     }
-
 
 
     // ツイートの削除
@@ -52,7 +55,7 @@ class PostsController extends Controller
         DB::table('posts')
          ->where('id', $id)
          ->delete();
-
+        // web.phpのpostルーティングを読み込み削除に成功したらトップページに反映
          return redirect('/top');
     }
 

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-// モデル定義をしてツイートの更新
+// モデル定義をしてツイート更新を許可
 use Illuminate\Database\Eloquent\Model;
 
 class User extends Authenticatable
