@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Follow;
+use App\Follower;
 
 
 

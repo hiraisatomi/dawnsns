@@ -1,16 +1,25 @@
 @extends('layouts.login')
 
 @section('content')
-<form action="/followerlist">
- @csrf
- </form>
- <div id='side-bar'>
-        <div class='followerlist'>
-            
-        <h1>Follower list</h1>
-        <br>
-        <p>ここにフォロワーリストを表示</p>
-        <br>
-        </div>
+
+<h1>Follower list</h1>
+        
+@foreach($followerlists as $followerlist)
+    <a href="/others/{{ $followerlist->id }}"><img src="/images/{{ $followerlist->images }}" alt="icon" class="circle2"/></a>
+@endforeach
+
+<table>
+@foreach($followerposts as $followerpost)
+        <tr>
+        <td>
+                <img src="/images/{{ $followerpost->images }}" alt="icon" class="circle2">
+                <!-- フォロワーの投稿の表示 -->
+        </td>
+        <td>{{ $followerpost->username }}</td>
+        <td>{{ $followerpost->posts }}</td>
+        <td>{{ $followerpost->created_at }}</td>
+        </tr>
+@endforeach
+</table>
 
 @endsection

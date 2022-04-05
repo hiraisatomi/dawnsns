@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h1>Follow list</h1>
+
 @foreach($followlists as $followlist)
     <a href="/others/{{ $followlist->id }}"><img src="/images/{{ $followlist->images }}" alt="icon" class="circle2"/></a>
 @endforeach

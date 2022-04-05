@@ -25,8 +25,8 @@
 </head>
 <body>
 <!-- ヘッダースタート -->
-@yield('header')
-    <header id="header">
+<header>
+    <div id="header">
         <ul>
             <li><a href="/top"><img src="images/main_logo.png"></a></li>
         </ul>

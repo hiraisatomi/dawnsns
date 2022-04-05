@@ -15,7 +15,7 @@
    @endif
 <dl class="UserProfile">
 
-<dt><img src="{{ Auth::user()->iconimages }}" class='circle2'>UserName</dt> 
+<dt><img src="{{ Auth::user()->images }}" class='circle2'>UserName</dt> 
     <dd><input type="text" name="username" value="{{ Auth::user()->username }}"></dd>
 
 <dt>MailAddress</dt>
