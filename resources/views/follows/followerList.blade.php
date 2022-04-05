@@ -1,7 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
-<form action="/followerlist" method="post">
+<form action="/followerlist">
  @csrf
  </form>
  <div id='side-bar'>

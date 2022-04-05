@@ -27,33 +27,27 @@
 <!-- ヘッダースタート -->
 @yield('header')
     <header id="header">
-        <div class="header1">
         <ul>
             <li><a href="/top"><img src="images/main_logo.png"></a></li>
         </ul>
-        </div>
-        <div class="header2">
-        <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="/images/{{ $user->images }}" class="circle"></p>
-        </div>
-    
-    <div class="nav-wrapper"><span></span><span></span></div>
-    <nav class="g-nav">
+        <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="/images/{{ $user->images }}" class="circle"><div class="openbtn"><span></span><span></span></div></p>
+        <nav id="g-nav">
         <ul>
             <li><a href="/top">HOME</a></li>
             <li><a href="/profile">プロフィール編集</a></li>
             <li><a href="/logout">ログアウト</a></li>
             </ul>
+    </div>
     </nav>
     </header>
+    
 
+    <div id="row">
+    <div id="container">
     <!-- コンテンツ継承 -->
     @yield('content')
-
-    <!-- フッタースタート -->
-        <footer>
-        
+</div>  
     <div id="side-bar">
-    @yield('footer')
 
             <!-- ログイン中のユーザー情報 Auth::user -->
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p> 
@@ -85,11 +79,9 @@
             
             <p class="btn"><a href="">つぶやき検索</a></p>
             </div>
-        </div>
-    </div>
 </div>
 </div>
-    </footer>
+ 
 
     <!-- jQueryのURL -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

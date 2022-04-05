@@ -87,13 +87,14 @@ export default{
 }
 
 
-$(".nav-wrapper").click(function()
+$(".openbtn").click(function ()
 {
-
 $(this).toggleClass('active');
     $("#g-nav").toggleClass('panelactive');
 });
 
 $("#g-nav a").click(function () {//ナビゲーションのリンクがクリックされたら
-  $(".nav-wrapper").removeClass('active');//ボタンの activeクラスを除去
+  $(".openbtn").removeClass('active');//ボタンの activeクラスを除去
+  $("#g-nav").removeClass('panelactive');//ナビゲーションのpanelactiveクラスも除去
 });
+

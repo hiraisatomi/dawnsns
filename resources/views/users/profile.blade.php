@@ -31,7 +31,7 @@
     <dd><input type="textarea" name="bio" value="{{ Auth::user()->bio }}"></dd>
 
 <dt>Icon Image</dt>
-    <dd><input type="file" name="iconimage" value="{{ Auth::user()->iconimage }}"></dd>
+    <dd><input type="file" name="iconimage"></dd>
 </dl>
 
 <input type="submit" name="upprofile" value="更新">

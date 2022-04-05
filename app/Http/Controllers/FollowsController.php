@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Follow;
 use App\Follower;
 use Illuminate\Support\Facades\Auth;
-use App\User;
 
 
 class FollowsController extends Controller
@@ -16,7 +15,18 @@ class FollowsController extends Controller
 //このユーザがフォローしている人を取得
 public function followlist()
     {
-        return view('follows.followList');
+        $followlists = Follow::join('users', 'follows.follow', '=', 'users.id')
+            ->where('follower', Auth::id())
+            ->select('users.id', 'users.images')
+            ->get();
+        
+        $followposts = Follow::join('users', 'follows.follow', '=', 'users.id')
+            ->join('posts', 'users.id', '=', 'posts.user_id')
+            ->where('follower', Auth::id())
+            ->select('users.id', 'users.images', 'posts.posts', 'posts.created_at')
+            ->get();
+   
+        return view('follows.followList', ['followlists' => $followlists, 'followposts' => $followposts]);
     }
 
 
@@ -25,6 +35,8 @@ public function followerlist()
     {
         return view('follows.followerList');
     }
+
+
 
 
     // フォローする

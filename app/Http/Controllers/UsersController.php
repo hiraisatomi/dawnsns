@@ -44,17 +44,28 @@ class UsersController extends Controller
 
         $user = Auth::user();
         $image = $request->file('iconimage');
+        $uppass= $request->input('newpassword');
         // 拡張子付きでファイル名を取得、名前の保存
         if(!empty($image)){
             $filename = $image->getClientOriginalName();
-            $image->storeAs('/images', $filename,);
+            $image->storeAs('/images', $filename, 'disk');
+
+            User::where('id', Auth::id())->update([
+            'images' => $filename,
+            ]);
         }
+
+        if(!empty($uppass)){
+        User::where('id', Auth::id())->update([
+            'password' => bcrypt($uppass),
+        ]);
+        }
+
         User::where('id', Auth::id())->update([
             'username' => $request->input('username'),
-            'mail' => $request->input('mail'),
-            'password' => bcrypt($request->input('newpassword')),
+            'mail' => $request->input('mail'), 
             'bio' => $request->input('bio'),
-            // 'iconimage' => basename($image),
+            
         ]);
         
         return redirect('/profile');
