@@ -4,12 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Follow;
+use App\Follower;
 use Illuminate\Support\Facades\Auth;
+use App\User;
+use App\Tweet;
 
 
 class FollowsController extends Controller
 {
     //
+    
+
     
 //このユーザがフォローしている人を取得
 public function followlist()
@@ -70,6 +75,11 @@ public function followerlist()
             return back();
  }
 
+    // フォローフォロワーのツイートページに飛ぶ
+    public function others()
+    {
+        return view('follows.others');
+    }
+
 
 }
-

@@ -1,9 +1,10 @@
 <!--  -->
+
 @extends('layouts.logout')
 
 @section('content')
 
-<div id="clear">
+<div id="session">
 <p>{{session('username')}}さん、</p>
 <p>ようこそ！DAWNSNSへ！</p>
 <br>

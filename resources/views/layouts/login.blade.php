@@ -26,34 +26,34 @@
 <body>
 <!-- ヘッダースタート -->
 <header>
-    <div id="header">
-        <ul>
-            <li><a href="/top"><img src="images/main_logo.png"></a></li>
-        </ul>
-        <p><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="/images/{{ $user->images }}" class="circle"><div class="openbtn"><span></span><span></span></div></p>
-        <nav id="g-nav">
-        <ul>
+            <!-- メインロゴを押すとトップページに戻るよう設定 -->
+        <div class="menu-bar"><a href="/top"><img src="images/main_logo.png"></a>
+        <ul class="menu">
+            <li class="menu-single">
+                <a href="" class="init-bottom"><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="/images/{{ $user->images }}" class="circle"></a>
+        <ul class="menu-second-lebel">
             <li><a href="/top">HOME</a></li>
             <li><a href="/profile">プロフィール編集</a></li>
             <li><a href="/logout">ログアウト</a></li>
-            </ul>
+        </ul>
+        </li>
+    </ul>
     </div>
-    </nav>
-    </header>
+</header>
     
 
     <div id="row">
     <div id="container">
     <!-- コンテンツ継承 -->
     @yield('content')
-</div>  
+</div> 
     <div id="side-bar">
 
             <!-- ログイン中のユーザー情報 Auth::user -->
                 <p><?php $user = Auth::user(); ?>{{ $user->username }}さんの</p> 
                 <div>
-                <p>フォロー数</p>
-                <p>名</p>
+                <p class="font-weight-bold">フォロー数</p>
+                <span>名</span>
                 </div>
 
         <div class='follow'>
@@ -62,8 +62,8 @@
         </div>
         
                 <div>
-                <p>フォロワー数</p>
-                <p>名</p>
+                <p class="font-weight-bold">フォロー数</p>
+                <span>名</span>
                 </div>
 
         <div class='follower'>
@@ -75,11 +75,8 @@
 
         <div class='search'>
             <p class="btn"><a href="/usersearch">ユーザー検索</a></p>
-            </div>
-            
-            <p class="btn"><a href="">つぶやき検索</a></p>
-            </div>
-</div>
+        </div>
+    </div>
 </div>
  
 

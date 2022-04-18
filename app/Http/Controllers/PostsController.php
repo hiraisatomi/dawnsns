@@ -29,7 +29,7 @@ class PostsController extends Controller
     //ツイート内容の送信保存
     public function tweet(Request $request){
         $tweet = $request->input('tweet');
-        post::create([
+        Post::create([
             'user_id' => Auth::id(),
             'posts' => $tweet,
         ]);     
@@ -41,7 +41,7 @@ class PostsController extends Controller
     public function uptweet(Request $request){
         $uptweet = $request->input('uptweet');
         $upid = $request->input('upid');
-        post::where('id',$upid)
+        Post::where('id',$upid)
             ->update([
                 'posts' => $uptweet,
         ]);        

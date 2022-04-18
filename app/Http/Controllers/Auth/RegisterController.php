@@ -108,6 +108,7 @@ class RegisterController extends Controller
 
     }
 
+    // 登録成功したらaddページに飛ぶ
     public function added(){
         return view('auth.added');
     }

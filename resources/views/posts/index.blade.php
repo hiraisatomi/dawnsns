@@ -9,9 +9,7 @@
 <!-- 入力方法、初期表示する内容placeholderの指定、画像の表示 -->
     <input type="text" name="tweet" placeholder="何をつぶやこうか...?">
     <input type="image" src="/images/post.png" alt="送信する">
-    <p></p>
 </form>
-
 <table>
 @foreach($lists as $list)
 <tr>

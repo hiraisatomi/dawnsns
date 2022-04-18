@@ -21,6 +21,7 @@ Route::resource('users', 'UsersController');
 Route::group(['middleware' => 'auth'], function() {
 });
 
+
 //ログインページ
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
@@ -40,7 +41,6 @@ Route::post('/tweet','PostsController@tweet');
 Route::post('/uptweet','PostsController@uptweet');
 // 投稿の削除
 Route::get('/posts/{id}/delete','PostsController@trash');
-
 
 Auth::routes();
 
@@ -65,9 +65,11 @@ Route::get('/unfollow/{unfollow}', 'FollowsController@unfollow');
 
 // フォローリスト
 Route::get('/followlist','FollowsController@followlist');
-
 // フォロワーリスト
 Route::get('/followerlist','FollowsController@followerlist');
+// 他のユーザーのページに飛ぶ
+Route::get('/others/{id}','FollowsController@others');
+
 
 // ログアウト時
 Route::get('/logout', 'Auth\LoginController@logout');
