@@ -18,9 +18,9 @@
 
 Auth::routes();
 Route::resource('users', 'UsersController');
-Route::group(['middleware' => 'auth'], function() {
-});
-
+// Route::group(['middleware' => 'auth'], function() {
+//     Route::get('/show','FollowsController@show');
+// });
 
 //ログインページ
 Route::get('/login', 'Auth\LoginController@login');
@@ -73,8 +73,5 @@ Route::get('/others/{id}','FollowsController@others');
 
 // ログアウト時
 Route::get('/logout', 'Auth\LoginController@logout');
-
-
-
 
 

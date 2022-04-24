@@ -20,29 +20,26 @@ class UsersTableSeeder extends Seeder
             'iconimage' => '/images/dawm.png'
         ]);
 
-        // // 共通テーブルの作成
-        // Schema::create('follow_users', function (Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->unsignedBigInteger('followed_user_id')->index();
-        //     $table->unsignedBigInteger('following_user_id')->index();
-        //     $table->foreign('followed_user_id')->references('id')->on('users')->onDelete('cascade');
-        //     $table->foreign('following_user_id')->references('id')->on('users')->onDelete('cascade');
-        //     $table->timestamps();
-        //     $table->foreign('followed_user_id')
-        //         ->references('id')
-        //         ->on('users')
-        //         ->cascadeOnDelete();
-        //     $table->foreign('following_user_id')
-        //         ->references('id')
-        //         ->on('users')
-        //         ->cascadeOnDelete();
-        // });
     }
+    //     public function up()
+    // {
+    //     Schema::create('users', function (Blueprint $table)
+    //     {
+    //         $table->increments('id')->autoIncrement();
+    //         $table->string('username',255);
+    //         $table->string('mail',255);
+    //         $table->string('password',255);
+    //         $table->string('bio',400)->nullable();
+    //         $table->string('images',255)->default('dawn.png')->nullable();
+    //         $table->timestamps();
+    //     });
+    // }
+       
         
-        public function down()
-        {
-            Schema::dropIfExists('follow_users');
-        }
+    //     public function down()
+    //     {
+    //         Schema::dropIfExists('follow_users');
+    //     }
     }
 
 

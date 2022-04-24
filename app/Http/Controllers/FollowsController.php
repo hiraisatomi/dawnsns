@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Follow;
-use App\Follower;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Tweet;
+use App\Post;
 
 
 class FollowsController extends Controller
@@ -76,10 +76,23 @@ public function followerlist()
  }
 
     // フォローフォロワーのツイートページに飛ぶ
-    public function others()
+    public function others($id)
     {
-        return view('follows.others');
+        $profile = User::where('id', $id)
+            ->select('id', 'username', 'bio', 'images')
+            ->first();
+
+        $lists = Post::where('user_id', $id)->orderby('posts.created_at','desc')
+            ->get();
+
+        $followlists = Follow::where('follower', Auth::id())
+            ->get()
+            ->toArray(); 
+
+        return view('follows.others', ['profile' => $profile, 'lists' => $lists, 'followlists'=> $followlists]);
     }
 
+
+    
 
 }
