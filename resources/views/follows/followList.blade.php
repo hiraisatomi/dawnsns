@@ -8,7 +8,7 @@
     <a href="/others/{{ $followlist->id }}"><img src="/images/{{ $followlist->images }}" alt="icon" class="circle2"/></a>
 @endforeach
 
-<table>
+<table class="table table-hover">
 @foreach($followposts as $followpost)
         <tr>
         <td>

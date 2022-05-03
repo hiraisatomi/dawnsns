@@ -5,9 +5,10 @@
     <!--IEブラウザ対策-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="description" content="ページの内容を表す文章" />
-    <title>DAWN SNS</title>
+    <title>DAWN SNS @yield('title')</title>
     <link rel="stylesheet" href="{{ asset('css/reset.css') }}">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!--スマホ,タブレット対応-->
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <!--サイトのアイコン指定-->
@@ -27,25 +28,22 @@
 <!-- ヘッダースタート -->
 <header>
             <!-- メインロゴを押すとトップページに戻るよう設定 -->
-        <div class="menu-bar"><a href="/top"><img src="{{ asset('images/main_logo.png') }}"></a>
+    <div class="menu-bar"><a href="/top"><img src="{{ asset('images/main_logo.png') }}"></a></div>
+
         <ul class="menu">
-            <li class="menu-single">
-                <a href="" class="init-bottom"><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="{{ asset('/images/'. $user->images) }}" class="circle"></a>
-        <ul class="menu-second-lebel">
-            <li><a href="/top">HOME</a></li>
-            <li><a href="/profile">プロフィール編集</a></li>
-            <li><a href="/logout">ログアウト</a></li>
+            <li>
+                <a href="javascript:void(0);" class="init-bottom"><?php $user = Auth::user(); ?>{{ $user->username }}さん<img src="{{ asset('/images/'. $user->images) }}" class="circle"></a>
+                <ul>
+                    <li><a href="/top">HOME</a></li>
+                    <li><a href="/profile">プロフィール編集</a></li>
+                    <li><a href="/logout">ログアウト</a></li>
+                </ul>
+            </li>
         </ul>
-        </li>
-    </ul>
-    </div>
 </header>
     
+    @section('sidebar')
 
-    <div id="container">
-    <!-- コンテンツ継承 -->
-    @yield('content')
-</div> 
     <div id="side-bar">
 
             <!-- ログイン中のユーザー情報 Auth::user -->
@@ -76,6 +74,12 @@
             <p class="btn"><a href="/usersearch">ユーザー検索</a></p>
         </div>
     </div>
+    @show
+
+    <div id="container">
+    <!-- コンテンツ継承 -->
+    @yield('content')
+</div> 
 </div>
  
 

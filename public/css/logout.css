@@ -9,4 +9,26 @@ body{
     background: linear-gradient(#3C4767,rgb(209, 96, 62)) fixed;
     text-align: center;
     text-decoration: inherit;
+    line-height: 50px;
+}
+
+.textbox{
+    background-color: rgba(59, 58, 73, 0.55);
+    color: #fff;
+    margin: 2rem auto;
+    width: 40%;
+    padding: 1rem;
+}
+
+.register{
+    color: #fff;
+
+}
+
+.mail{
+    white-space: pre-line;
+}
+
+.mail .textbox{
+    border-radius: 10px   
 }

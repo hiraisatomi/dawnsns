@@ -15,11 +15,13 @@
 <tr>
     <td><img src="/images/{{ $user->images }}" alt="icon" class="circle2"/></td>
     <td>{{ $user->username }}</td>
+<div class="follow">
     @if(!in_array($user->id, array_column($followlists, 'follow')))
-    <td><a href="/follow/{{$user->id}}">フォローをする</a></td>
+    <td><a class="btn btn-primary" a href="/follow/{{$user->id}}">フォローをする</a></td>
     @else
-    <td><a href="/unfollow/{{$user->id}}">フォローを外す</a></td>
+    <td><a class="btn btn-danger" a href="/unfollow/{{$user->id}}">フォローを外す</a></td>
     @endif
+</div>
 </tr>
 @endforeach
 </table>

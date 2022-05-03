@@ -13,7 +13,7 @@
 </form>
 </div>
 <div id="tweets">
-<table>
+<table class="table table-hover">
 @foreach($lists as $list)
 <tr>
     <td>
